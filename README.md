@@ -1,2 +1,0 @@
-# GuessTheCelebrity
-GuessTheCelebrity
