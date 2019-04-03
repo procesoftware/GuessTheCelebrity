@@ -6,34 +6,30 @@ class MainView extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.tempNav}>
+        <View style={styles.nav}>
           <Text style={{ fontStyle: "italic" }}>Guess The Celebrity</Text>
         </View>
         <Image
-          style={{ width: 100 + "%", height: 65 +"%" }}
+          style={{ width: 100 + "%", height: 65 + "%" }}
           source={require("../../images/image2.jpg")}
         />
         <View style={styles.tempGuess}>
-          <Text> ___    ___   ___   ___   ___   ___   ___</Text>
+          <Text> ___ ___ ___ ___ ___ ___ ___</Text>
         </View>
-        <View style={styles.tempButton}>
-          <Button
-            title="A"
-          />
-           <Button
-            title="B"
-          />
-        </View> 
+        <View style={styles.buttonView}>
+          <Button title="A" />
+          <Button title="B" />
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  tempNav: {
+  nav: {
     width: 100 + "%",
-    height: 46,
-    marginTop: 20,
+    height: 5 + "%",
+    marginTop: 10 ,
     backgroundColor: "rgb(250,250,250)",
     borderBottomColor: "rgb(233,233,233)",
     justifyContent: "center",
@@ -46,19 +42,20 @@ const styles = StyleSheet.create({
     height: 100 + "%"
   },
   button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10
+    width: 50,
+    height: 50
   },
-  tempButton: {
-    width: 100 + "%",
-    height: 100,
-    marginTop: 20,
+  buttonView: {
+    width: 100,
+    height: 50,
+    marginTop: 10,
     backgroundColor: "rgb(250,250,250)",
     borderBottomColor: "rgb(233,233,233)",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    marginLeft: 40
+    marginLeft: 40,
+    flex: 0,
+    flexDirection: "row"
   },
   tempGuess: {
     width: 100 + "%",
@@ -68,7 +65,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "rgb(233,233,233)",
     justifyContent: "center",
     alignItems: "center"
-  },
+  }
 });
 
 export default MainView;
