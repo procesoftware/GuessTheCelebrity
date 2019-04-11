@@ -4,7 +4,7 @@ import { styles, buttons } from "./styles"
 
 export default class MainView extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       celebrityName: [],
@@ -13,7 +13,7 @@ export default class MainView extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.initializeGame();
   }
 
@@ -22,9 +22,11 @@ export default class MainView extends Component {
     splited = "TRUMP".split('');
 
     var randomValues = this.shuffle(this.generateRandomChars(splited.slice()));
-    this.setState({celebrityName: splited,
+    this.setState({
+      celebrityName: splited,
       guessName: [],
-      randomChars: randomValues});
+      randomChars: randomValues
+    });
   }
 
   _onResetButton = () => {
@@ -32,64 +34,122 @@ export default class MainView extends Component {
   }
 
   generateRandomChars = (guessName) => {
-    var chars ='ABCDEFGHIJKLMNOPQRSTUVWXTZ'.split('');
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXTZ'.split('');
     var randomValues = guessName;
-    
-    for(i=guessName.length;i<=18;i++){
-        randomValues.push(chars[Math.floor((Math.random() * 25) + 1)]);
-    } 
+
+    for (i = guessName.length; i <= 18; i++) {
+      randomValues.push(chars[Math.floor((Math.random() * 25) + 1)]);
+    }
     return randomValues;
   }
 
   shuffle = (a) => {
-    for (let i = a.length -1 ; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i ));
-        [a[i], a[j]] = [a[j], a[i]];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i));
+      [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
   }
 
-  _loadGuessedBoard = () =>{
+  _loadGuessedBoard = () => {
     var len = this.state.celebrityName.length;
     var result = [];
 
-    for(i=0;i<len;i++){
-      if(typeof(this.state.guessName[i])=== 'undefined')
+    for (i = 0; i < len; i++) {
+      if (typeof (this.state.guessName[i]) === 'undefined')
         result.push(<Text key={i}> ___ </Text>)
-      else 
+      else
         result.push(<Text key={i}> {this.state.guessName[i]} </Text>)
     }
     return result;
   }
 
   getResult = (arr1, arr2) => {
-    if(arr2.lenght < arr1.lenght)
+    if (arr2.lenght < arr1.lenght)
       return false;
     for (var i = 0; i < arr1.length; i++) {
       if (arr1[i] !== arr2[i])
-          return false;
-      }
-      return true;
+        return false;
+    }
+    return true;
   }
 
   _onPressChar = (index) => {
     var randomChars = this.state.randomChars.slice();
     var guessName = this.state.guessName.slice();
-    console.log("value: "+randomChars[index]);
-    if(randomChars[index]==="")
+    console.log("value: " + randomChars[index]);
+    if (randomChars[index] === "")
       return;
     guessName.push(randomChars[index])
     randomChars[index] = "";
 
-    this.setState({randomChars: randomChars, guessName: guessName})
+    this.setState({ randomChars: randomChars, guessName: guessName })
 
-    if(this.getResult(this.state.celebrityName, guessName))
+    if (this.getResult(this.state.celebrityName, guessName))
       alert("WIN")
   }
 
   _setRandomChar = (index) => {
-    if(typeof(this.state.randomChars[i])!== 'undefined')
-      return <Text >{this.state.randomChars[index]}</Text>
+    if (typeof (this.state.randomChars[i]) !== 'undefined') {
+      if (this.state.randomChars[index] === 'T')
+        return <Image style={styles.button} source={require('../img/T.png')} />;
+      else if (this.state.randomChars[index] === 'A')
+        return <Image style={styles.button} source={require('../img/A.png')} />;
+      else if (this.state.randomChars[index] === 'B')
+        return <Image style={styles.button} source={require('../img/B.png')} />;
+      else if (this.state.randomChars[index] === 'C')
+        return <Image style={styles.button} source={require('../img/C.png')} />;
+      else if (this.state.randomChars[index] === 'D')
+        return <Image style={styles.button} source={require('../img/D.png')} />;
+      else if (this.state.randomChars[index] === 'E')
+        return <Image style={styles.button} source={require('../img/E.png')} />;
+      else if (this.state.randomChars[index] === 'F')
+        return <Image style={styles.button} source={require('../img/F.png')} />;
+      else if (this.state.randomChars[index] === 'G')
+        return <Image style={styles.button} source={require('../img/G.png')} />;
+      else if (this.state.randomChars[index] === 'I')
+        return <Image style={styles.button} source={require('../img/H.png')} />;
+      else if (this.state.randomChars[index] === 'I')
+        return <Image style={styles.button} source={require('../img/I.png')} />;
+      else if (this.state.randomChars[index] === 'J')
+        return <Image style={styles.button} source={require('../img/J.png')} />;
+      else if (this.state.randomChars[index] === 'K')
+        return <Image style={styles.button} source={require('../img/K.png')} />;
+      else if (this.state.randomChars[index] === 'L')
+        return <Image style={styles.button} source={require('../img/L.png')} />;
+      else if (this.state.randomChars[index] === 'M')
+        return <Image style={styles.button} source={require('../img/M.png')} />;
+      else if (this.state.randomChars[index] === 'N')
+        return <Image style={styles.button} source={require('../img/N.png')} />;
+      else if (this.state.randomChars[index] === 'O')
+        return <Image style={styles.button} source={require('../img/O.png')} />;
+      else if (this.state.randomChars[index] === 'P')
+        return <Image style={styles.button} source={require('../img/P.png')} />;
+      else if (this.state.randomChars[index] === 'Q')
+        return <Image style={styles.button} source={require('../img/Q.png')} />;
+      else if (this.state.randomChars[index] === 'R')
+        return <Image style={styles.button} source={require('../img/R.png')} />;
+      else if (this.state.randomChars[index] === 'S')
+        return <Image style={styles.button} source={require('../img/S.png')} />;
+      else if (this.state.randomChars[index] === 'T')
+        return <Image style={styles.button} source={require('../img/T.png')} />;
+      else if (this.state.randomChars[index] === 'U')
+        return <Image style={styles.button} source={require('../img/U.png')} />;
+      else if (this.state.randomChars[index] === 'V')
+        return <Image style={styles.button} source={require('../img/V.png')} />;
+      else if (this.state.randomChars[index] === 'Y')
+        return <Image style={styles.button} source={require('../img/Y.png')} />;
+      else if (this.state.randomChars[index] === 'X')
+        return <Image style={styles.button} source={require('../img/X.png')} />;
+      else if (this.state.randomChars[index] === 'Y')
+        return <Image style={styles.button} source={require('../img/Y.png')} />;
+      else if (this.state.randomChars[index] === 'Z')
+        return <Image style={styles.button} source={require('../img/Z.png')} />;
+      else if (this.state.randomChars[index] === 'W')
+        return <Image style={styles.button} source={require('../img/W.png')} />;
+      else
+        return <Image style={styles.button} source={require('../img/check.png')} />;
+    }
   }
 
   render() {
@@ -102,10 +162,10 @@ export default class MainView extends Component {
           style={{ width: 100 + "%", height: 65 + "%" }}
           source={require("../../../../images/trump.jpg")}
         />
-        <View style={{flexDirection:"row", justifyContent: "center", marginTop: 20}}>
-            {this._loadGuessedBoard()}
+        <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
+          {this._loadGuessedBoard()}
         </View>
-        <View style={{flexDirection:"row", justifyContent: "center", marginTop: 20}}>
+        <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
           <TouchableOpacity onPress={() => this._onPressChar(0)} style={buttons.tile} >
             {this._setRandomChar(0)}
           </TouchableOpacity>
@@ -134,7 +194,7 @@ export default class MainView extends Component {
             {this._setRandomChar(8)}
           </TouchableOpacity>
         </View>
-        <View style={{flexDirection:"row", justifyContent: "center"}}>
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <TouchableOpacity onPress={() => this._onPressChar(9)} style={buttons.tile} >
             {this._setRandomChar(9)}
           </TouchableOpacity>
