@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity, Button, Alert } from "react-native";
 import { styles, buttons } from "./styles"
+import NavBar from "../../navbar/NavBar";
 
 export default class MainView extends Component {
 
@@ -19,7 +20,7 @@ export default class MainView extends Component {
 
   initializeGame = () => {
     var splited = this.state.celebrityName.slice();
-    splited = "TRUMP".split('');
+    splited = "JENNIFER".split('');
 
     var randomValues = this.shuffle(this.generateRandomChars(splited.slice()));
     this.setState({
@@ -57,7 +58,8 @@ export default class MainView extends Component {
 
     for (i = 0; i < len; i++) {
       if (typeof (this.state.guessName[i]) === 'undefined')
-        result.push(<Text key={i}> ___ </Text>)
+        //result.push(<Text key={i}> _p_ </Text>)
+        result.push(<Image key={i} style={styles.button} source={require('../img/box.png')} />)
       else
         result.push(<Text key={i}> {this.state.guessName[i]} </Text>)
     }
@@ -155,12 +157,15 @@ export default class MainView extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <View>
+         <NavBar/>
+        </View>
         <View style={styles.nav}>
           <Text style={{ fontStyle: "italic" }}>Guess The Celebrity</Text>
         </View>
         <Image
           style={{ width: 100 + "%", height: 65 + "%" }}
-          source={require("../../../../images/trump.jpg")}
+          source={require("../../../../images/jennifer.jpg")}
         />
         <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
           {this._loadGuessedBoard()}

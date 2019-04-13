@@ -5,7 +5,7 @@ class NavBar extends Component {
     render() {
         return (
             <View >
-                <Text style={{ fontStyle: "italic" }}>Guess The Celebrity</Text>
+                <Text style={{ fontStyle: "italic" }}>   </Text>
             </View>)};
 }
 
