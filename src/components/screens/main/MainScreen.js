@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity, Button, Alert } from "react-native";
 import { styles, buttons } from "./styles"
 import NavBar from "../../navbar/NavBar";
+import { colors } from "react-native-elements";
 
 export default class MainView extends Component {
 
@@ -167,7 +168,7 @@ export default class MainView extends Component {
           style={{ width: 100 + "%", height: 65 + "%" }}
           source={require("../../../../images/jennifer.jpg")}
         />
-        <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
+        <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20, borderTopWidth: 5, borderBottomWidth: 5, borderTopColor: "#1e90ff", borderBottomColor: "#1e90ff", backgroundColor: "#1e90ff" }}>
           {this._loadGuessedBoard()}
         </View>
         <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
