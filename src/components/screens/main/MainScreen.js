@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, Image, TouchableOpacity, Button, Alert } from "react-native";
-import { styles, buttons } from "./styles"
+import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { styles, buttons } from "./MainScreen.styles";
+import { Container, Header, Content, Button, Icon } from 'native-base';
 
 export default class MainView extends Component {
 
@@ -9,7 +10,9 @@ export default class MainView extends Component {
     this.state = {
       celebrityName: [],
       guessName: [],
-      randomChars: []
+      randomChars: [],
+      myCoins: 0,
+      level: 1
     }
   }
 
@@ -35,9 +38,10 @@ export default class MainView extends Component {
     var chars ='ABCDEFGHIJKLMNOPQRSTUVWXTZ'.split('');
     var randomValues = guessName;
     
-    for(i=guessName.length;i<=18;i++){
+    for(i=guessName.length;i<18;i++){
         randomValues.push(chars[Math.floor((Math.random() * 25) + 1)]);
     } 
+    console.log(randomValues);
     return randomValues;
   }
 
@@ -49,15 +53,16 @@ export default class MainView extends Component {
     return a;
   }
 
+
   _loadGuessedBoard = () =>{
     var len = this.state.celebrityName.length;
     var result = [];
 
     for(i=0;i<len;i++){
       if(typeof(this.state.guessName[i])=== 'undefined')
-        result.push(<Text key={i}> ___ </Text>)
+        result.push(<Text key={i}> ___ </Text>);
       else 
-        result.push(<Text key={i}> {this.state.guessName[i]} </Text>)
+        result.push(<Text key={i}>{this.state.guessName[i]}</Text>);
     }
     return result;
   }
@@ -75,7 +80,7 @@ export default class MainView extends Component {
   _onPressChar = (index) => {
     var randomChars = this.state.randomChars.slice();
     var guessName = this.state.guessName.slice();
-    console.log("value: "+randomChars[index]);
+
     if(randomChars[index]==="")
       return;
     guessName.push(randomChars[index])
@@ -96,10 +101,12 @@ export default class MainView extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.nav}>
+          <Text>Level {this.state.level}</Text>
           <Text style={{ fontStyle: "italic" }}>Guess The Celebrity</Text>
+          <Text>{this.state.myCoins} Coins</Text>
         </View>
         <Image
-          style={{ width: 100 + "%", height: 65 + "%" }}
+          style={{ width: 100 + "%", height: 60 + "%" }}
           source={require("../../../../images/trump.jpg")}
         />
         <View style={{flexDirection:"row", justifyContent: "center", marginTop: 20}}>
@@ -164,7 +171,8 @@ export default class MainView extends Component {
           </TouchableOpacity>
         </View>
         <View>
-          <Button title="Reset" onPress={() => this._onResetButton()} />
+              <Button  title="Reset" onPress={() => this._onResetButton()}/>
+              
         </View>
       </View>
     );

@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 20,
+        marginTop: 10 + "%",
         width: 100 + "%",
         height: 100 + "%"
       },
@@ -15,7 +15,10 @@ const styles = StyleSheet.create({
         backgroundColor: "rgb(250,250,250)",
         borderBottomColor: "rgb(233,233,233)",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
       }
 });
 
