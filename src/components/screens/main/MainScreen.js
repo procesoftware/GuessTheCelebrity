@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, Button, Alert } from "react-native
 import { styles, buttons } from "./styles"
 import NavBar from "../../navbar/NavBar";
 import { colors } from "react-native-elements";
+import { getImageSourceLink } from "./buttonFunc";
 
 export default class MainView extends Component {
 
@@ -94,64 +95,7 @@ export default class MainView extends Component {
 
   _setRandomChar = (index) => {
     if (typeof (this.state.randomChars[i]) !== 'undefined') {
-      if (this.state.randomChars[index] === 'T')
-        return <Image style={styles.button} source={require('../img/T.png')} />;
-      else if (this.state.randomChars[index] === 'A')
-        return <Image style={styles.button} source={require('../img/A.png')} />;
-      else if (this.state.randomChars[index] === 'B')
-        return <Image style={styles.button} source={require('../img/B.png')} />;
-      else if (this.state.randomChars[index] === 'C')
-        return <Image style={styles.button} source={require('../img/C.png')} />;
-      else if (this.state.randomChars[index] === 'D')
-        return <Image style={styles.button} source={require('../img/D.png')} />;
-      else if (this.state.randomChars[index] === 'E')
-        return <Image style={styles.button} source={require('../img/E.png')} />;
-      else if (this.state.randomChars[index] === 'F')
-        return <Image style={styles.button} source={require('../img/F.png')} />;
-      else if (this.state.randomChars[index] === 'G')
-        return <Image style={styles.button} source={require('../img/G.png')} />;
-      else if (this.state.randomChars[index] === 'I')
-        return <Image style={styles.button} source={require('../img/H.png')} />;
-      else if (this.state.randomChars[index] === 'I')
-        return <Image style={styles.button} source={require('../img/I.png')} />;
-      else if (this.state.randomChars[index] === 'J')
-        return <Image style={styles.button} source={require('../img/J.png')} />;
-      else if (this.state.randomChars[index] === 'K')
-        return <Image style={styles.button} source={require('../img/K.png')} />;
-      else if (this.state.randomChars[index] === 'L')
-        return <Image style={styles.button} source={require('../img/L.png')} />;
-      else if (this.state.randomChars[index] === 'M')
-        return <Image style={styles.button} source={require('../img/M.png')} />;
-      else if (this.state.randomChars[index] === 'N')
-        return <Image style={styles.button} source={require('../img/N.png')} />;
-      else if (this.state.randomChars[index] === 'O')
-        return <Image style={styles.button} source={require('../img/O.png')} />;
-      else if (this.state.randomChars[index] === 'P')
-        return <Image style={styles.button} source={require('../img/P.png')} />;
-      else if (this.state.randomChars[index] === 'Q')
-        return <Image style={styles.button} source={require('../img/Q.png')} />;
-      else if (this.state.randomChars[index] === 'R')
-        return <Image style={styles.button} source={require('../img/R.png')} />;
-      else if (this.state.randomChars[index] === 'S')
-        return <Image style={styles.button} source={require('../img/S.png')} />;
-      else if (this.state.randomChars[index] === 'T')
-        return <Image style={styles.button} source={require('../img/T.png')} />;
-      else if (this.state.randomChars[index] === 'U')
-        return <Image style={styles.button} source={require('../img/U.png')} />;
-      else if (this.state.randomChars[index] === 'V')
-        return <Image style={styles.button} source={require('../img/V.png')} />;
-      else if (this.state.randomChars[index] === 'Y')
-        return <Image style={styles.button} source={require('../img/Y.png')} />;
-      else if (this.state.randomChars[index] === 'X')
-        return <Image style={styles.button} source={require('../img/X.png')} />;
-      else if (this.state.randomChars[index] === 'Y')
-        return <Image style={styles.button} source={require('../img/Y.png')} />;
-      else if (this.state.randomChars[index] === 'Z')
-        return <Image style={styles.button} source={require('../img/Z.png')} />;
-      else if (this.state.randomChars[index] === 'W')
-        return <Image style={styles.button} source={require('../img/W.png')} />;
-      else
-        return <Image style={styles.button} source={require('../img/check.png')} />;
+        return <Image style={styles.button} source={getImageSourceLink(this.state.randomChars[index])} />;
     }
   }
 
