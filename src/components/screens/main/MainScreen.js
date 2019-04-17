@@ -63,7 +63,11 @@ export default class MainView extends Component {
         //result.push(<Text key={i}> _p_ </Text>)
         result.push(<Image key={i} style={styles.button} source={require('../img/box.png')} />)
       else
-        result.push(<Text key={i}> {this.state.guessName[i]} </Text>)
+        //result.push(<Text key={i}> {this.state.guessName[i]} </Text>)
+        result.push(<TouchableOpacity onPress={() => this._onPressGuessChar(i)} style={buttons.tile} >
+          <Image key={i} style={styles.button} source={getImageSourceLink(this.state.guessName[i])} />
+        </TouchableOpacity>
+        )
     }
     return result;
   }
@@ -93,17 +97,22 @@ export default class MainView extends Component {
       alert("WIN")
   }
 
+  _onPressGuessChar = (index) => {
+    //BURAYI YAZIYORUZ
+    //return(<Image key={index} style={styles.button} source={require('../img/box.png')} />)
+  }
+
   _setRandomChar = (index) => {
     if (typeof (this.state.randomChars[i]) !== 'undefined') {
-        return <Image style={styles.button} source={getImageSourceLink(this.state.randomChars[index])} />;
+      return <Image style={styles.button} source={getImageSourceLink(this.state.randomChars[index])} />;
     }
   }
 
   render() {
     return (
       <View style={styles.container}>
-      <View>
-         <NavBar/>
+        <View>
+          <NavBar />
         </View>
         <View style={styles.nav}>
           <Text style={{ fontStyle: "italic" }}>Guess The Celebrity</Text>
