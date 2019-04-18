@@ -68,7 +68,7 @@ export default class MainView extends Component {
         result.push(<Image key={i} style={styles.button} source={require('../img/box.png')} />)
       else
         //result.push(<Text key={i}> {this.state.guessName[i]} </Text>)
-        result.push(<TouchableOpacity onPress={() => this._onPressGuessChar(i)} style={buttons.tile} >
+        result.push(<TouchableOpacity key={i} onPress={() => this._onPressGuessChar(i)} style={buttons.tile} >
           <Image key={i} style={styles.button} source={getImageSourceLink(this.state.guessName[i])} />
         </TouchableOpacity>
         )
