@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import GameScreen from "./src/components/screens/game/GameScreen";
+import HomeScreen from './src/components/screens/home/HomeScreen'
 
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <GameScreen />
+        <HomeScreen />
       </View>
     );
   }

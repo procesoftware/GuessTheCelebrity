@@ -3,6 +3,7 @@ import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import GameScreen from '../screens/game/GameScreen';
 import SettingsScreen from '../screens/settings/SettingsScreen';
 import LevelScreen from '../screens/level/LevelScreen';
+import HomeScreen from '../screens/home/HomeScreen';
 import { Icon } from 'native-base';
 
 const TabNavigator = createBottomTabNavigator({
@@ -22,11 +23,11 @@ const TabNavigator = createBottomTabNavigator({
       },
     },
   },
-  Settings: {
-    screen: SettingsScreen,
+  HomeScreen: {
+    screen: HomeScreen,
     navigationOptions: {
       tabBarIcon: ({ focused, tintColor }) => {
-          return <Icon name='person'  />;
+          return <Icon name='home'  />;
       },
     },
   }
