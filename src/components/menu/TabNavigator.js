@@ -1,16 +1,16 @@
 import React from 'react';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import MainScreen from '../screens/main/MainScreen';
+import GameScreen from '../screens/game/GameScreen';
 import SettingsScreen from '../screens/settings/SettingsScreen';
 import LevelScreen from '../screens/level/LevelScreen';
-import { Icon } from 'react-native-elements';
+import { Icon } from 'native-base';
 
 const TabNavigator = createBottomTabNavigator({
   Game: {
-    screen: MainScreen,
+    screen: GameScreen,
     navigationOptions: {
       tabBarIcon: ({ focused, tintColor }) => {
-          return <Icon name='home' size={25} color={tintColor} />;
+          return <Icon name='apps' />;
       },
     }
   },
@@ -18,7 +18,7 @@ const TabNavigator = createBottomTabNavigator({
     screen: LevelScreen,
     navigationOptions: {
       tabBarIcon: ({ focused, tintColor }) => {
-          return <Icon name='settings' size={25} color={tintColor} />;
+          return <Icon name='camera' />;
       },
     },
   },
@@ -26,7 +26,7 @@ const TabNavigator = createBottomTabNavigator({
     screen: SettingsScreen,
     navigationOptions: {
       tabBarIcon: ({ focused, tintColor }) => {
-          return <Icon name='settings' size={25} color={tintColor} />;
+          return <Icon name='person'  />;
       },
     },
   }

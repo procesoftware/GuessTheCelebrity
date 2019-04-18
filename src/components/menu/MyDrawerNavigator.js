@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Button, StyleSheet, Image } from 'react-native';
 import { createDrawerNavigator, createAppContainer } from 'react-navigation';
-import MainScreen from '../screens/main/MainScreen';
+import GameScreen from '../screens/game/GameScreen';
 import { Icon } from 'react-native-elements'
 
 class HomeScreen extends React.Component {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 
 const MyDrawerNavigator = createDrawerNavigator({
     Home: {
-        screen: HomeScreen,
+        screen: GameScreen,
     },
     GetCoins: {
         screen: CoinScreen,

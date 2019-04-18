@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
-import { styles, buttons } from "./MainScreen.styles";
+import { styles, buttons } from "./GameScreen.styles";
 import { Container, Header, Content, Button, Icon } from 'native-base';
+import RandomImage from './RandomImage';
 
 export default class MainView extends Component {
 
@@ -12,7 +13,8 @@ export default class MainView extends Component {
       guessName: [],
       randomChars: [],
       myCoins: 0,
-      level: 1
+      level: 1,
+      index : 0
     }
   }
 
@@ -22,12 +24,16 @@ export default class MainView extends Component {
 
   initializeGame = () => {
     var splited = this.state.celebrityName.slice();
-    splited = "TRUMP".split('');
+    const index = Math.floor(Math.random() * RandomImage.length);
+
+    splited = RandomImage[index].name.split('');
 
     var randomValues = this.shuffle(this.generateRandomChars(splited.slice()));
     this.setState({celebrityName: splited,
       guessName: [],
-      randomChars: randomValues});
+      randomChars: randomValues,
+      index: index
+    });
   }
 
   _onResetButton = () => {
@@ -107,7 +113,7 @@ export default class MainView extends Component {
         </View>
         <Image
           style={{ width: 100 + "%", height: 60 + "%" }}
-          source={require("../../../../images/trump.jpg")}
+          source={RandomImage[this.state.index].url}
         />
         <View style={{flexDirection:"row", justifyContent: "center", marginTop: 20}}>
             {this._loadGuessedBoard()}

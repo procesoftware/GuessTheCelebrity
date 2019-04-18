@@ -1,0 +1,15 @@
+{
+    "total": 2,
+    "images": [
+      {
+        "id": "1",
+        "name": "TRUMP",
+        "url": "require('../../../../images/trump.jpeg')"
+      },
+      {
+        "id": "2",
+        "name": "PIZZA",
+        "url":"../../../../images/image.jpg"
+      }
+    ]
+  }
