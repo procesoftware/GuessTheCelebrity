@@ -3,7 +3,8 @@ import { View, Text, Image, TouchableOpacity, Button, Alert } from "react-native
 import { styles, buttons } from "./styles"
 import NavBar from "../../navbar/NavBar";
 import { colors } from "react-native-elements";
-import { getImageSourceLink } from "./buttonFunc";
+import { getImageSourceLink } from "./ButtonFunc";
+import RandomImage from './RandomImage';
 
 export default class MainView extends Component {
 
@@ -12,7 +13,8 @@ export default class MainView extends Component {
     this.state = {
       celebrityName: [],
       guessName: [],
-      randomChars: []
+      randomChars: [],
+      index: 0
     }
   }
 
@@ -22,13 +24,15 @@ export default class MainView extends Component {
 
   initializeGame = () => {
     var splited = this.state.celebrityName.slice();
-    splited = "JENNIFER".split('');
+    const index = Math.floor(Math.random() * RandomImage.length); // generate random index
+    splited = RandomImage[index].name.split(''); // get random image name
 
     var randomValues = this.shuffle(this.generateRandomChars(splited.slice()));
     this.setState({
       celebrityName: splited,
       guessName: [],
-      randomChars: randomValues
+      randomChars: randomValues,
+      index: index
     });
   }
 
@@ -110,7 +114,7 @@ export default class MainView extends Component {
         </View>
         <Image
           style={{ width: 100 + "%", height: 65 + "%" }}
-          source={require("../../../../images/jennifer.jpg")}
+          source={RandomImage[this.state.index].url}
         />
         <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20, borderTopWidth: 5, borderBottomWidth: 5, borderTopColor: "#1e90ff", borderBottomColor: "#1e90ff", backgroundColor: "#1e90ff" }}>
           {this._loadGuessedBoard()}
