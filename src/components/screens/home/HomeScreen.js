@@ -7,7 +7,8 @@ import {
   Content,
   CardItem,
   Icon,
-  Body
+  Body,
+  View
 } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { styles } from "./HomeScreen.style";
@@ -19,7 +20,13 @@ export default class HomeScreen extends Component {
         <Content>
           <Grid>
             <Row style={styles.topRow}>
-
+              <Icon
+                name="keypad"  
+                style={{
+                  color: "red",
+                }}
+              />
+              <Text style={{ marginTop: 30 }}>Guess The Celebrity</Text>  
             </Row>
             <Row style={styles.buttonRow}>
               <Button
@@ -27,7 +34,7 @@ export default class HomeScreen extends Component {
                 style={styles.playButton}
                 onPress={() => this.props.navigation.navigate("Game")}
               >
-                <Text>New Game</Text>
+                <Text>Play Game</Text>
               </Button>
             </Row>
           </Grid>

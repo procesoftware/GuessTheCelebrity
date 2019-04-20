@@ -5,7 +5,10 @@ const { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   topRow: {
     height: height * 0.6,
-    width: width
+    width: width,    
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
   },
   buttonRow: {
     justifyContent: "center",
