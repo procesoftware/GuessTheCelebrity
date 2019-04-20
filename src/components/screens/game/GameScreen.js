@@ -11,6 +11,7 @@ import { styles, buttons } from "./GameScreen.styles";
 import NavBar from "../../navbar/NavBar";
 import { getImageSourceLink } from "./ButtonFunc";
 import RandomImage from "./RandomImage";
+import { SafeAreaView } from 'react-navigation';
 
 export default class GameScreen extends Component {
   constructor(props) {
@@ -136,14 +137,16 @@ export default class GameScreen extends Component {
     }
   };
 
+  static navigationOptions = {
+    title: 'Guess The Celebrity',
+    headerLeft: null
+  };
+
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View>
           <NavBar />
-        </View>
-        <View style={styles.nav}>
-          <Text style={{ fontStyle: "italic" }}>Guess The Celebrity</Text>
         </View>
         <Image
           style={styles.image}
@@ -265,7 +268,7 @@ export default class GameScreen extends Component {
         <View>
           <Button title="Reset" onPress={() => this._onResetButton()} />
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
