@@ -11,7 +11,7 @@ import { styles, buttons } from "./GameScreen.styles";
 import NavBar from "../../navbar/NavBar";
 import { getImageSourceLink } from "./ButtonFunc";
 import RandomImage from "./RandomImage";
-import { SafeAreaView } from 'react-navigation';
+import { SafeAreaView } from "react-navigation";
 
 export default class GameScreen extends Component {
   constructor(props) {
@@ -28,12 +28,12 @@ export default class GameScreen extends Component {
     this.initializeGame(true);
   }
 
-  initializeGame = (firstLoad) => {
+  initializeGame = firstLoad => {
     var splited = this.state.celebrityName.slice();
-    let index = this.state.index
-    if(firstLoad===true){
-       index = Math.floor(Math.random() * RandomImage.length); // generate random index
-    } 
+    let index = this.state.index;
+    if (firstLoad === true) {
+      index = Math.floor(Math.random() * RandomImage.length); // generate random index
+    }
     splited = RandomImage[index].name.split(""); // get random image name
 
     var randomValues = this.shuffle(this.generateRandomChars(splited.slice()));
@@ -77,7 +77,7 @@ export default class GameScreen extends Component {
         result.push(
           <Image
             key={i}
-            style={styles.button}
+            style={buttons.tile}
             source={require("../img/box.png")}
           />
         );
@@ -111,14 +111,17 @@ export default class GameScreen extends Component {
   _onPressChar = index => {
     var randomChars = this.state.randomChars.slice();
     var guessName = this.state.guessName.slice();
-    console.log("value: " + randomChars[index]);
+
     if (randomChars[index] === "") return;
     guessName.push(randomChars[index]);
     randomChars[index] = "";
 
     this.setState({ randomChars: randomChars, guessName: guessName });
 
-    if (this.getResult(this.state.celebrityName, guessName)) alert("WIN");
+    if (this.getResult(this.state.celebrityName, guessName))
+      this.props.navigation.navigate("Win");
+    else if(this.state.celebrityName.length===guessName.length) 
+      this.props.navigation.navigate("GameOver");
   };
 
   _onPressGuessChar = index => {
@@ -138,14 +141,14 @@ export default class GameScreen extends Component {
   };
 
   static navigationOptions = {
-    title: 'Guess The Celebrity',
+    title: "Guess The Celebrity",
     headerLeft: null
   };
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View>
+        <View style={styles.nav}>
           <NavBar />
         </View>
         <Image
@@ -266,7 +269,11 @@ export default class GameScreen extends Component {
           </TouchableOpacity>
         </View>
         <View>
-          <Button title="Reset" onPress={() => this._onResetButton()} />
+          <Button
+            title="Reset"
+            style={buttons.reset}
+            onPress={() => this._onResetButton()}
+          />
         </View>
       </SafeAreaView>
     );

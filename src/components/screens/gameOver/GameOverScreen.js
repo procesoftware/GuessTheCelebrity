@@ -4,8 +4,8 @@ import { Text, View } from "react-native";
 export default class GameOverScreen extends Component {
   render() {
     return (
-      <View>
-        <Text> GameOverScreen </Text>
+      <View style={{ flex:1 , justifyContent: "center", alignItems: "center" }}>
+        <Text> Game Over </Text>
       </View>
     );
   }

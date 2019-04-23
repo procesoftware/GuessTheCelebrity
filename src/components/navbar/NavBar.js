@@ -5,7 +5,7 @@ class NavBar extends Component {
     render() {
         return (
             <View >
-                <Text style={{ fontStyle: "italic" }}>   </Text>
+                <Text>  Level: 1</Text>
             </View>)};
 }
 

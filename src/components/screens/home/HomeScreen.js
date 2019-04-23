@@ -24,6 +24,7 @@ export default class HomeScreen extends Component {
                 name="keypad"  
                 style={{
                   color: "red",
+                  fontSize: 50
                 }}
               />
               <Text style={{ marginTop: 30 }}>Guess The Celebrity</Text>  
