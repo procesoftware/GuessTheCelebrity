@@ -8,20 +8,31 @@ import {
 import HomeScreen from "./src/components/screens/home/HomeScreen";
 import GameOverScreen from "./src/components/screens/gameOver/GameOverScreen";
 import WinScreen from "./src/components/screens/win/WinScreen";
+import { Provider } from "mobx-react";
+import ScoreStore from "./src/store/ScoreStore.js";
 
 const AppStack = createStackNavigator({
   Home: HomeScreen,
-  Game: GameScreen,
   GameOver: GameOverScreen,
   Win: WinScreen
 });
+
+const GameStack = createStackNavigator({
+  Game: GameScreen
+});
+const WinStack = createStackNavigator({
+  Win: WinScreen
+});
+
 //const AuthStack = createStackNavigator({ Game: SignInScreen });
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(
     {
       //AuthLoading: AuthLoadingScreen,
-      App: AppStack
+      App: AppStack,
+      Game: GameStack,
+      Win: WinStack
       // Auth: AuthStack,
     },
     {
@@ -32,6 +43,8 @@ const AppContainer = createAppContainer(
 
 export default class App extends Component {
   render() {
-    return <AppContainer />;
+    return (<Provider store = {ScoreStore}>
+                <AppContainer />
+            </Provider>);
   }
 }

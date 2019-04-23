@@ -12,9 +12,12 @@ import {
 } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { styles } from "./HomeScreen.style";
+import {inject, observer} from "mobx-react/native";
 
+@inject('store') @observer
 export default class HomeScreen extends Component {
   render() {
+    const store = this.props.store;
     return (
       <Container>
         <Content>
@@ -27,7 +30,8 @@ export default class HomeScreen extends Component {
                   fontSize: 50
                 }}
               />
-              <Text style={{ marginTop: 30 }}>Guess The Celebrity</Text>  
+              <Text style={{ marginTop: 30 }}>Guess The Celebrity</Text>
+              <Text> Total coins:  {store.score}</Text>  
             </Row>
             <Row style={styles.buttonRow}>
               <Button

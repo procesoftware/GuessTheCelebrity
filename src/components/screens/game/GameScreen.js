@@ -12,7 +12,9 @@ import NavBar from "../../navbar/NavBar";
 import { getImageSourceLink } from "./ButtonFunc";
 import RandomImage from "./RandomImage";
 import { SafeAreaView } from "react-navigation";
+import {inject, observer} from "mobx-react/native";
 
+@inject('store') @observer
 export default class GameScreen extends Component {
   constructor(props) {
     super(props);
@@ -118,9 +120,10 @@ export default class GameScreen extends Component {
 
     this.setState({ randomChars: randomChars, guessName: guessName });
 
-    if (this.getResult(this.state.celebrityName, guessName))
+    if (this.getResult(this.state.celebrityName, guessName)){
       this.props.navigation.navigate("Win");
-    else if(this.state.celebrityName.length===guessName.length) 
+      this.props.store.increment();
+    } else if(this.state.celebrityName.length===guessName.length) 
       this.props.navigation.navigate("GameOver");
   };
 
@@ -149,7 +152,7 @@ export default class GameScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.nav}>
-          <NavBar />
+          <View><Text>Total Coins: {this.props.store.score}</Text></View>
         </View>
         <Image
           style={styles.image}
