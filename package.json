@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "debug:ios": "react-native run-ios"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.4",
