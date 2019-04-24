@@ -10,6 +10,7 @@ import GameOverScreen from "./src/components/screens/gameOver/GameOverScreen";
 import WinScreen from "./src/components/screens/win/WinScreen";
 import { Provider } from "mobx-react";
 import ScoreStore from "./src/store/ScoreStore.js";
+import { YellowBox } from 'react-native';
 
 const AppStack = createStackNavigator({
   Home: HomeScreen,
@@ -24,16 +25,12 @@ const WinStack = createStackNavigator({
   Win: WinScreen
 });
 
-//const AuthStack = createStackNavigator({ Game: SignInScreen });
-
 const AppContainer = createAppContainer(
   createSwitchNavigator(
     {
-      //AuthLoading: AuthLoadingScreen,
       App: AppStack,
       Game: GameStack,
       Win: WinStack
-      // Auth: AuthStack,
     },
     {
       initialRouteName: "App"
@@ -43,8 +40,15 @@ const AppContainer = createAppContainer(
 
 export default class App extends Component {
   render() {
-    return (<Provider store = {ScoreStore}>
-                <AppContainer />
-            </Provider>);
+    YellowBox.ignoreWarnings([
+      'Warning: componentWillMount is deprecated',
+      'Warning: componentWillReceiveProps is deprecated',
+      'Warning: componentWillUpdate is deprecated'
+    ]);
+    return (
+      <Provider store={ScoreStore}>
+        <AppContainer />
+      </Provider>
+    );
   }
 }

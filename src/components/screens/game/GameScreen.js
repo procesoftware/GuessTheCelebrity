@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { styles, buttons } from "./GameScreen.styles";
 import NavBar from "../../navbar/NavBar";
+import {Icon} from 'native-base';
 import { getImageSourceLink } from "./ButtonFunc";
 import RandomImage from "./RandomImage";
 import { SafeAreaView } from "react-navigation";
@@ -191,7 +192,9 @@ export default class GameScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.nav}>
-          <View><Text>Total Coins: {this.props.store.score}</Text></View>
+          <View>
+            <Text>Total Coins: {this.props.store.score}</Text>
+          </View>
         </View>
         <Image
           style={styles.image}
@@ -208,6 +211,7 @@ export default class GameScreen extends Component {
         </View>
         
         <View>
+
           <Button
             title="Reset"
             style={buttons.reset}

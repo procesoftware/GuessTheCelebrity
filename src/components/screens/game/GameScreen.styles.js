@@ -50,7 +50,7 @@ const buttons = StyleSheet.create({
   },
   reset: {
     justifyContent: "center",
-    marginTop: 20
+    marginTop: 30
   }
 });
 

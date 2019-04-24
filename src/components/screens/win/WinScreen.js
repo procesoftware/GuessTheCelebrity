@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native'
+import { Text, View, Button, Image } from 'react-native'
 
 import {inject, observer} from "mobx-react/native";
+import {styles} from './WinScreen.style';
 
 @inject('store') @observer
 export default class WinScreen extends Component {
@@ -14,14 +15,15 @@ export default class WinScreen extends Component {
   render() {
     const store = this.props.store;
     return (
-      <View>
-        <Text>WIN 10 Coins</Text> 
-        <Text>Total Coins: {store.score}</Text>
-        <Button
-                rounded
-                onPress={() => this.props.navigation.navigate("Game")}
-                title= "Play again"
-        />
+      <View >
+        <Image source={require("../../../../images/win.png")}
+          resizeMode="stretch" fadeDuration={10}
+          style={styles.winImage}
+          />
+          <Button rounded
+                  onPress={() => this.props.navigation.navigate("Game")}
+                  title= "Play again"
+          />
       </View>
     )
   }

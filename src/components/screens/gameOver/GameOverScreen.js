@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Image, View } from "react-native";
+import {styles} from './GameOverScreen.style';
 
 export default class GameOverScreen extends Component {
   render() {
     return (
-      <View style={{ flex:1 , justifyContent: "center", alignItems: "center" }}>
-        <Text> Game Over </Text>
+      <View>
+        <Image source={require("../../../../images/gameover.jpg")}
+          resizeMode="stretch" fadeDuration={10}
+          style={styles.winImage}
+          />
       </View>
     );
   }

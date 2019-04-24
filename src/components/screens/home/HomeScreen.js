@@ -30,8 +30,8 @@ export default class HomeScreen extends Component {
                   fontSize: 50
                 }}
               />
-              <Text style={{ marginTop: 30 }}>Guess The Celebrity</Text>
-              <Text> Total coins:  {store.score}</Text>  
+              <Text style={{ marginTop: 30, fontSize: 26, fontFamily: 'Cochin' }}>Guess The Celebrity</Text>
+              <Text style={{top: 50,  fontSize: 16}}> Total coins:  {store.score}</Text>  
             </Row>
             <Row style={styles.buttonRow}>
               <Button
