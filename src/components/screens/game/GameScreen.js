@@ -85,19 +85,38 @@ export default class GameScreen extends Component {
         );
       //result.push(<Text key={i}> {this.state.guessName[i]} </Text>)
       else
-        result.push(
-          <TouchableOpacity
-            key={i}
-            onPress={() => this._onPressGuessChar(i)}
-            style={buttons.tile}
-          >
-            <Image
-              key={i}
-              style={styles.button}
-              source={getImageSourceLink(this.state.guessName[i])}
-            />
+      {
+        //result.push(<Text key={i}> {this.state.guessName[i]} </Text>)
+         let x = i;
+         result.push(<TouchableOpacity key={x} onPress={() => this._onPressGuessChar(x)} style={buttons.tile} >
+                   <Image key={x} style={styles.button} source={getImageSourceLink(this.state.guessName[x])} />
+                  </TouchableOpacity>
+        )
+      }
+    }
+    return result;
+  }
+
+  _loadLetterBoard = (relativeFlag) => {
+    var startIndex = 0;
+    var endIndex = 0;//this.state.celebrityName.length;
+    if (relativeFlag === 0 ){
+       startIndex = 0;
+       endIndex = 9;
+    }
+    else {
+      startIndex = 9;
+      endIndex = 18;
+    }
+    var result = [];
+
+    for (i = startIndex; i < endIndex; i++) {  
+        let x = i;  
+         result.push(
+          <TouchableOpacity key = {x} onPress={() => this._onPressChar(x)} style={buttons.tile} >
+              {this._setRandomChar(x)}
           </TouchableOpacity>
-        );
+         );
     }
     return result;
   };
@@ -127,10 +146,30 @@ export default class GameScreen extends Component {
       this.props.navigation.navigate("GameOver");
   };
 
-  _onPressGuessChar = index => {
+  _onPressGuessChar = (i) => {
     //BURAYI YAZIYORUZ
     //return(<Image key={index} style={styles.button} source={require('../img/box.png')} />)
-  };
+   // this.state.guessName = "";// should get the remaining value from the index
+    var changedGuessName = this.state.guessName.slice(0,i);
+    this.setState({  guessName: changedGuessName });
+    //giden harfleri yerine koy 
+    //hangi harfler eklenecek letterBoarda
+    var placeBackLetters = this.state.guessName.slice(i, this.state.guessName.length);
+    //placebackLetters should be placed back to the letter board;
+    var localRandomChars = this.state.randomChars.slice();
+    for (var  i=0 ; i < placeBackLetters.length; i++){
+          let locali =i;
+         for (var j=0; j < localRandomChars.length ; j++){
+           let localj =j;
+           if (localRandomChars[localj]=== ""){
+            localRandomChars[localj]= placeBackLetters[locali];
+            break;
+           }
+         }
+    }
+    this.setState({  randomChars: localRandomChars });
+
+  }
 
   _setRandomChar = index => {
     if (typeof this.state.randomChars[i] !== "undefined") {
@@ -158,119 +197,16 @@ export default class GameScreen extends Component {
           style={styles.image}
           source={RandomImage[this.state.index].url}
         />
-        <View style={styles.guessBoard}>{this._loadGuessedBoard()}</View>
+        <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20, borderTopWidth: 5, borderBottomWidth: 5, borderTopColor: "#1e90ff", borderBottomColor: "#1e90ff", backgroundColor: "#1e90ff" }}>
+          {this._loadGuessedBoard()}
+        </View>
         <View style={buttons.container}>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(0)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(0)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(1)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(1)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(2)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(2)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(3)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(3)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(4)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(4)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(5)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(5)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(6)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(6)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(7)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(7)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(8)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(8)}
-          </TouchableOpacity>
-        </View>
+           { this._loadLetterBoard(0) }
+           </View>
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(9)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(9)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(10)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(10)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(11)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(11)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(12)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(12)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(13)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(13)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(14)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(14)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(15)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(15)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(16)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(16)}
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onPressChar(17)}
-            style={buttons.tile}
-          >
-            {this._setRandomChar(17)}
-          </TouchableOpacity>
+           { this._loadLetterBoard(1) }
         </View>
+        
         <View>
           <Button
             title="Reset"

@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "debug:ios": "react-native run-ios"
+    "debug:ios": "react-native run-ios",
+    "debug:dev": "react-native run-ios --scheme 'My project scheme' --configuration 'Debug' --simulator 'iPhone 8'",
+    "debug:lev": "react-native run-ios"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.4",
