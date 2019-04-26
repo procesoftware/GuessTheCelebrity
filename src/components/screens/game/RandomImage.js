@@ -12,8 +12,8 @@ export default (RandomImage = [
     url: require("../../../../images/image.jpg")
   },
   {
-    name: "IMAGEX",
-    url: require("../../../../images/image2.jpg")
+    name: "HARRISON",
+    url: require("../../../../images/harrison_ford.jpg")
   },
   {
     name: "PETER",

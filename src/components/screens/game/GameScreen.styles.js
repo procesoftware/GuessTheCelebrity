@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   image: {
-    width: width,
-    height: height * 0.5
+    width: width ,
+    height: height * 0.5,
+    resizeMode: 'contain',
   },
   guessBoard: {
     flexDirection: "row",

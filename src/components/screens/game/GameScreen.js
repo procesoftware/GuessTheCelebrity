@@ -56,7 +56,7 @@ export default class GameScreen extends Component {
     var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZ".split("");
     var randomValues = guessName;
 
-    for (i = guessName.length; i <= 18; i++) {
+    for (i = guessName.length; i < 18; i++) {
       randomValues.push(chars[Math.floor(Math.random() * 25 + 1)]);
     }
     return randomValues;
