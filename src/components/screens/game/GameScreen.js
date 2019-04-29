@@ -141,8 +141,14 @@ export default class GameScreen extends Component {
     this.setState({ randomChars: randomChars, guessName: guessName });
 
     if (this.getResult(this.state.celebrityName, guessName)){
-      this.props.navigation.navigate("Win");
+      
       this.props.store.increment();
+      if (this.props.store.score > 100) {
+        this.props.navigation.navigate("Win");
+      }
+      else{
+        this.props.navigation.navigate("Fireworks");
+      }
     } else if(this.state.celebrityName.length===guessName.length) 
       this.props.navigation.navigate("GameOver");
   };
