@@ -8,6 +8,7 @@ import {
 import HomeScreen from "./src/components/screens/home/HomeScreen";
 import GameOverScreen from "./src/components/screens/gameOver/GameOverScreen";
 import WinScreen from "./src/components/screens/win/WinScreen";
+import Fireworks from "./src/components/screens/win/Fireworks";
 import { Provider } from "mobx-react";
 import ScoreStore from "./src/store/ScoreStore.js";
 import { YellowBox } from 'react-native';
@@ -15,7 +16,8 @@ import { YellowBox } from 'react-native';
 const AppStack = createStackNavigator({
   Home: HomeScreen,
   GameOver: GameOverScreen,
-  Win: WinScreen
+  Win: WinScreen,
+  Fireworks: Fireworks
 });
 
 const GameStack = createStackNavigator({
@@ -24,13 +26,17 @@ const GameStack = createStackNavigator({
 const WinStack = createStackNavigator({
   Win: WinScreen
 });
+const FireworksStack = createStackNavigator({
+  Fireworks: Fireworks
+});
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(
     {
       App: AppStack,
       Game: GameStack,
-      Win: WinStack
+      Win: WinStack,
+      Fireworks: FireworksStack
     },
     {
       initialRouteName: "App"

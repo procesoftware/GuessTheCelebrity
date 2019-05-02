@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "38351534240",
+    "firebase_url": "https://guess-the-celebrity-c6f3b.firebaseio.com",
+    "project_id": "guess-the-celebrity-c6f3b",
+    "storage_bucket": "guess-the-celebrity-c6f3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38351534240:android:93400e1e625feea6",
+        "android_client_info": {
+          "package_name": "com.uk.guessthecelebrity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38351534240-fe4rn9e5hjhhfb03emivoihcim383km4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTrQyWOmJTLUXNq6hoaLW-Q-Ao0NeleAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38351534240-fe4rn9e5hjhhfb03emivoihcim383km4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
