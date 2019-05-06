@@ -163,7 +163,9 @@ export default class GameScreen extends Component {
     this.setState({ randomChars: randomChars, guessName: guessName });
 
     if (this.getResult(this.state.celebrityName, guessName)) {
-      this.props.store.increment();
+      if (this.state.letterErrorCount <= 2){
+       this.props.store.increment();
+      }
       if (this.props.store.score % 100 === 0 &&  this.props.store.score >= 100) {
         // this.props.navigation.navigate("LevelPage");
         this.props.navigation.navigate("Win");
