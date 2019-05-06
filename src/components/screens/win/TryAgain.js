@@ -11,7 +11,7 @@ import { styles } from './WinScreen.style';
 
 
 @inject('store') @observer
-export default class Fireworks extends Component {
+export default class TryAgain extends Component {
 
   static navigationOptions = {
     title: "Guess The Celebrity",
@@ -51,33 +51,11 @@ export default class Fireworks extends Component {
       this.currentTime = time;
   }
 
-  /* state = {
-    timer: null,
-    counter: 0
-  };
-
-  componentDidMount() {
-    let timer = setInterval(this.tick, 3000);
-    this.setState({timer});
-  }
-
-  componentWillUnmount() {
-    this.clearInterval(this.state.timer);
-  }
-
-  tick =() => {
-    this.props.navigation.navigate("Game");
-  } */
-
-  
-
-
-
   render() {
     const store = this.props.store;
     return (
       <View >
-        <Image source={require("../../../../images/fireworks.jpg")}
+        <Image source={require("../../../../images/TryAgain.jpg")}
           resizeMode="stretch" fadeDuration={10}
           style={styles.winImage}
         />
@@ -104,7 +82,7 @@ export default class Fireworks extends Component {
 
 const options = {
   container: {
-    backgroundColor: '#00FF00',
+    backgroundColor: '#FF0000',
     padding: 5,
     borderRadius: 5,
     width: 100,

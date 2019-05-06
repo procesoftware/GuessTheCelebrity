@@ -20,8 +20,10 @@
     "react": "16.8.3",
     "react-native": "^0.59.6",
     "react-native-elements": "^1.1.0",
+    "react-native-flip-timer": "0.0.3",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-stopwatch-timer": "0.0.20",
+    "react-native-timer-countdown": "^4.1.0",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.8.1",
     "react-timer-machine": "^1.0.2"
