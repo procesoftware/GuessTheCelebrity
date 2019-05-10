@@ -9,12 +9,12 @@ import {
 } from "react-native";
 import { styles, buttons } from "./GameScreen.styles";
 import NavBar from "../../navbar/NavBar";
-import { Icon } from "native-base";
 import { getImageSourceLink } from "./ButtonFunc";
 import RandomImage from "./RandomImage";
 import { SafeAreaView } from "react-navigation";
 import { inject, observer } from "mobx-react/native";
 import TimerCountdown from "react-native-timer-countdown";
+import { Icon } from 'react-native-elements';
 
 @inject("store")
 @observer
@@ -280,7 +280,11 @@ export default class GameScreen extends Component {
       <SafeAreaView style={styles.container}>
         <View style={styles.nav}>
             <View>
-              <Text>Total Coins : {this.props.store.score} </Text>
+              <Text>Total Coins : {this.props.store.score} </Text>              
+            </View>
+            <View>
+              <Icon  raised  name='trophy'  type='font-awesome'  color='#f50'
+                     onPress={() => this.props.navigation.navigate("AvatarAndClickable")} />
             </View>
             <View >
              

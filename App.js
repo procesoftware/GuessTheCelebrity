@@ -10,6 +10,7 @@ import GameOverScreen from "./src/components/screens/gameOver/GameOverScreen";
 import WinScreen from "./src/components/screens/win/WinScreen";
 import Fireworks from "./src/components/screens/win/Fireworks";
 import TryAgain from "./src/components/screens/win/TryAgain";
+import AvatarAndClickable from "./src/components/screens/leaderboard/AvatarAndClickable";
 import { Provider } from "mobx-react";
 import ScoreStore from "./src/store/ScoreStore.js";
 import { YellowBox } from 'react-native';
@@ -19,7 +20,8 @@ const AppStack = createStackNavigator({
   GameOver: GameOverScreen,
   Win: WinScreen,
   Fireworks: Fireworks,
-  TryAgain: TryAgain
+  TryAgain: TryAgain,
+  AvatarAndClickable: AvatarAndClickable,
 });
 
 const GameStack = createStackNavigator({
@@ -34,6 +36,10 @@ const FireworksStack = createStackNavigator({
 const TryAgainStack = createStackNavigator({
   TryAgain: TryAgain
 });
+const AvatarAndClickableStack = createStackNavigator({
+  AvatarAndClickable: AvatarAndClickable
+});
+
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(
@@ -42,7 +48,8 @@ const AppContainer = createAppContainer(
       Game: GameStack,
       Win: WinStack,
       Fireworks: FireworksStack,
-      TryAgain: TryAgainStack
+      TryAgain: TryAgainStack,
+      AvatarAndClickable: AvatarAndClickableStack
     },
     {
       initialRouteName: "App"
