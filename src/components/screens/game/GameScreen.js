@@ -14,7 +14,9 @@ import RandomImage from "./RandomImage";
 import { SafeAreaView } from "react-navigation";
 import { inject, observer } from "mobx-react/native";
 import TimerCountdown from "react-native-timer-countdown";
-import { Icon } from 'react-native-elements';
+//import { Icon } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 @inject("store")
 @observer
@@ -39,6 +41,10 @@ export default class GameScreen extends Component {
 
   componentDidMount() {
     this.initializeGame(true);
+  }
+
+  componentWillUnmount(){
+    this.setState({milliseconds:0});
   }
 
   initializeGame = firstLoad => {
@@ -283,8 +289,10 @@ export default class GameScreen extends Component {
               <Text>Total Coins : {this.props.store.score} </Text>              
             </View>
             <View>
-              <Icon  raised  name='trophy'  type='font-awesome'  color='#f50'
-                     onPress={() => this.props.navigation.navigate("AvatarAndClickable")} />
+              <Icon name="trophy"    size={30}  onPress={() => this.props.navigation.navigate("AvatarAndClickable")} />
+            </View>
+             <View>
+             <Icon name="login" size={30} color="#900" onPress={() => this.props.navigation.navigate("Login")}/>
             </View>
             <View >
              
@@ -307,7 +315,6 @@ export default class GameScreen extends Component {
                   return h + m + ":" + s;
                 }}
                 allowFontScaling={true}
-               style={{rightMargin:10}}
               />
             </View>
         </View>

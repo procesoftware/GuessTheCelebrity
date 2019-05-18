@@ -11,9 +11,11 @@ import WinScreen from "./src/components/screens/win/WinScreen";
 import Fireworks from "./src/components/screens/win/Fireworks";
 import TryAgain from "./src/components/screens/win/TryAgain";
 import AvatarAndClickable from "./src/components/screens/leaderboard/AvatarAndClickable";
+import LoginScreen from "./src/components/screens/login/Login";
 import { Provider } from "mobx-react";
 import ScoreStore from "./src/store/ScoreStore.js";
 import { YellowBox } from 'react-native';
+
 
 const AppStack = createStackNavigator({
   Home: HomeScreen,
@@ -22,6 +24,7 @@ const AppStack = createStackNavigator({
   Fireworks: Fireworks,
   TryAgain: TryAgain,
   AvatarAndClickable: AvatarAndClickable,
+  Login: LoginScreen,
 });
 
 const GameStack = createStackNavigator({
@@ -39,6 +42,9 @@ const TryAgainStack = createStackNavigator({
 const AvatarAndClickableStack = createStackNavigator({
   AvatarAndClickable: AvatarAndClickable
 });
+const LoginStack = createStackNavigator({
+  Login: LoginScreen
+});
 
 
 const AppContainer = createAppContainer(
@@ -49,7 +55,8 @@ const AppContainer = createAppContainer(
       Win: WinStack,
       Fireworks: FireworksStack,
       TryAgain: TryAgainStack,
-      AvatarAndClickable: AvatarAndClickableStack
+      AvatarAndClickable: AvatarAndClickableStack,
+      Login: LoginStack
     },
     {
       initialRouteName: "App"
@@ -58,11 +65,14 @@ const AppContainer = createAppContainer(
 );
 
 export default class App extends Component {
+  
+
   render() {
     YellowBox.ignoreWarnings([
       'Warning: componentWillMount is deprecated',
       'Warning: componentWillReceiveProps is deprecated',
-      'Warning: componentWillUpdate is deprecated'
+      'Warning: componentWillUpdate is deprecated',
+      
     ]);
     return (
       <Provider store={ScoreStore}>

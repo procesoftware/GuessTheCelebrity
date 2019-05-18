@@ -3,6 +3,7 @@ import { View, Alert, Text } from 'react-native';
 
 import Leaderboard from 'react-native-leaderboard';
 import { inject, observer } from "mobx-react/native";
+import {styles} from '../gameOver/GameOverScreen.style';
 
 @inject('store') @observer
 export default class AvatarAndClickable extends Component {
@@ -45,7 +46,7 @@ export default class AvatarAndClickable extends Component {
         }
 
         return (
-            <View>
+            <View  style={styles.winImage}>
                 {/* Ghetto Header */}
                 <View style={{ paddingTop: 50, backgroundColor: 'black', alignItems: 'center' }}>
                     <Text style={{ fontSize: 30, color: 'white', paddingBottom: 10 }}>

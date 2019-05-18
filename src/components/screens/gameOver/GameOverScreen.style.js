@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
   winImage: {
     width: width,
     height: height - 200
+  },
+  container:{
+    flex: 1,
+    padding: 20,
   }
 });
 
