@@ -13,10 +13,7 @@ import { styles } from './WinScreen.style';
 @inject('store') @observer
 export default class TryAgain extends Component {
 
-  static navigationOptions = {
-    title: "Guess The Celebrity",
-    headerLeft: null
-  };
+
 
   constructor(props) {
     super(props);

@@ -20,7 +20,7 @@ export default class Login extends Component {
       }
       componentWillMount(){
         const firebaseConfig= {
-            apiKey: "AIzaSyCAgplpZKIns2BOJ0WKBG87pCYxkS-_MvU",
+            apiKey: "",
             authDomain: "guessthecelebrity-de0ce.firebaseapp.com",
             databaseURL: "https://guessthecelebrity-de0ce.firebaseio.com",
             projectId: "guessthecelebrity-de0ce",

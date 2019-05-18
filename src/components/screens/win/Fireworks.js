@@ -13,10 +13,6 @@ import { styles } from './WinScreen.style';
 @inject('store') @observer
 export default class Fireworks extends Component {
 
-  static navigationOptions = {
-    title: "Guess The Celebrity",
-    headerLeft: null
-  };
 
   constructor(props) {
     super(props);
