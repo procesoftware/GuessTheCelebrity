@@ -1,0 +1,2 @@
+
+import GTCFirebase from "../../../../firebaseConfig";

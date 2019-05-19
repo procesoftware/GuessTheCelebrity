@@ -4,7 +4,7 @@ import { View, StyleSheet,  ActivityIndicator, Text, Button } from 'react-native
 import { inject, observer } from "mobx-react/native";
 import { GTCInput } from '../../common/GTCInput';
 import { GTCButton } from '../../common/GTCButton';
-import FirebaseConfig from "../../../../firebaseConfig";
+import GTCFirebase from "../../../../firebaseConfig";
 
 
 @inject('store') @observer
@@ -34,7 +34,7 @@ export default class Login extends Component {
       onPressSignIn() {
           //this.setState({authenticating:true})
 
-          FirebaseConfig
+          GTCFirebase
               .auth()
               .createUserWithEmailAndPassword(this.state.email, this.state.password)
               .then(() => { 
@@ -43,10 +43,12 @@ export default class Login extends Component {
                 })
               .catch(error => {
                   this.setState({ errorMessage: error.message });
-                  this.setState({authenticating:false});
-                  
-                })
-          
+                  this.setState({authenticating:false});                  
+                })          
+      }
+
+      register(){
+          this.props.navigation.navigate("Register");
       }
 
      renderCurrentState()  {
@@ -74,6 +76,7 @@ export default class Login extends Component {
                      value={this.state.password}
                     ></GTCInput>
                     <GTCButton onPress={ () => this.onPressSignIn()} children="Log In"></GTCButton>
+                    <GTCButton onPress={ () => this.register()} children="Register"></GTCButton>
                     <Text>{this.state.errorMessage}</Text>
             </View>
         )

@@ -12,6 +12,7 @@ import Fireworks from "./src/components/screens/win/Fireworks";
 import TryAgain from "./src/components/screens/win/TryAgain";
 import AvatarAndClickable from "./src/components/screens/leaderboard/AvatarAndClickable";
 import LoginScreen from "./src/components/screens/login/Login";
+import RegisterScreen from "./src/components/screens/login/RegisterUser";
 import { Provider } from "mobx-react";
 import ScoreStore from "./src/store/ScoreStore.js";
 import { YellowBox } from 'react-native';
@@ -25,6 +26,7 @@ const AppStack = createStackNavigator({
   TryAgain: TryAgain,
   AvatarAndClickable: AvatarAndClickable,
   Login: LoginScreen,
+  Register: RegisterScreen,
 });
 
 const GameStack = createStackNavigator({
@@ -45,7 +47,9 @@ const AvatarAndClickableStack = createStackNavigator({
 const LoginStack = createStackNavigator({
   Login: LoginScreen
 });
-
+const RegisterStack = createStackNavigator({
+  Register: RegisterScreen
+});
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(
@@ -56,7 +60,8 @@ const AppContainer = createAppContainer(
       Fireworks: FireworksStack,
       TryAgain: TryAgainStack,
       AvatarAndClickable: AvatarAndClickableStack,
-      Login: LoginStack
+      Login: LoginStack,
+      Register: RegisterStack
     },
     {
       initialRouteName: "App"

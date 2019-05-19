@@ -11,6 +11,6 @@ const  firebaseConfig = {
         messagingSenderId: config.messagingSenderId,
         appId: config.appId
       }
-const FirebaseConfig = firebase.initializeApp(firebaseConfig);
-export default FirebaseConfig;
+const GTCFirebase = firebase.initializeApp(firebaseConfig);
+export default GTCFirebase;
     
