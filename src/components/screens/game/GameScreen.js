@@ -8,13 +8,11 @@ import {
   Alert
 } from "react-native";
 import { styles, buttons } from "./GameScreen.styles";
-import NavBar from "../../navbar/NavBar";
 import { getImageSourceLink } from "./ButtonFunc";
 import RandomImage from "./RandomImage";
 import { SafeAreaView } from "react-navigation";
 import { inject, observer } from "mobx-react/native";
 import TimerCountdown from "react-native-timer-countdown";
-//import { Icon } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
@@ -35,7 +33,7 @@ export default class GameScreen extends Component {
       play: true,
       time: 0,
       milliseconds: 10000,
-      letterErrorCount:0
+      letterErrorCount: 0
     };
   }
 
@@ -43,13 +41,13 @@ export default class GameScreen extends Component {
     this.initializeGame(true);
   }
 
-  componentWillUnmount(){
-    this.setState({milliseconds:0});
-   // let config = {
-      //databaseURL: "https://guessthecelebrity-de0ce.firebaseio.com",
-     // projectId: "<project-id>",
-  //};
- // firebase.initializeApp(config);
+  componentWillUnmount() {
+    this.setState({ milliseconds: 0 });
+
+  }
+
+  componentWillMount() {
+    
   }
 
   initializeGame = firstLoad => {
@@ -66,7 +64,7 @@ export default class GameScreen extends Component {
       guessName: [],
       randomChars: randomValues,
       index: index,
-      letterErrorCount:0
+      letterErrorCount: 0
     });
   };
 
@@ -174,19 +172,19 @@ export default class GameScreen extends Component {
     this.setState({ randomChars: randomChars, guessName: guessName });
 
     if (this.getResult(this.state.celebrityName, guessName)) {
-      if (this.state.letterErrorCount <= 2){
-       this.props.store.increment();
+      if (this.state.letterErrorCount <= 2) {
+        this.props.store.increment();
       }
-      if (this.props.store.score % 100 === 0 &&  this.props.store.score >= 100) {
+      if (this.props.store.score % 100 === 0 && this.props.store.score >= 100) {
         // this.props.navigation.navigate("LevelPage");
         this.props.navigation.navigate("Win");
       } else {
-        if (this.state.letterErrorCount <= 2){
-          this.setState({letterErrorCount:0});
+        if (this.state.letterErrorCount <= 2) {
+          this.setState({ letterErrorCount: 0 });
           this.props.navigation.navigate("Fireworks");
         }
-        else if (this.state.letterErrorCount > 2){
-          this.setState({letterErrorCount:0});
+        else if (this.state.letterErrorCount > 2) {
+          this.setState({ letterErrorCount: 0 });
           this.props.navigation.navigate("TryAgain");
         }
       }
@@ -262,7 +260,7 @@ export default class GameScreen extends Component {
         // find the index of the char in randomchars
         index = this._getBoardLetter(this.state.celebrityName[i]);
         this._onPressChar(index);
-        this.setState({letterErrorCount: this.state.letterErrorCount+1})
+        this.setState({ letterErrorCount: this.state.letterErrorCount + 1 })
         break;
       }
     }
@@ -289,38 +287,38 @@ export default class GameScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.nav}>
-            <View>
-              <Text>Total Coins : {this.props.store.score} </Text>              
-            </View>
-            <View>
-              <Icon name="trophy"    size={30}  onPress={() => this.props.navigation.navigate("AvatarAndClickable")} />
-            </View>
-             <View>
-             <Icon name="login" size={30} color="#900" onPress={() => this.props.navigation.navigate("Login")}/>
-            </View>
-            <View >
-             
-              <TimerCountdown
-                initialMilliseconds={this.state.milliseconds}
-                onTick={milliseconds => this._onTickTimer(milliseconds)}
-                onExpire={() => console.log("complete")}
-                formatMilliseconds={milliseconds => {
-                  const remainingSec = Math.round(milliseconds / 1000);
-                  const seconds = parseInt((remainingSec % 60).toString(), 10);
-                  const minutes = parseInt(
-                    ((remainingSec / 60) % 60).toString(),
-                    10
-                  );
-                  const hours = parseInt((remainingSec / 3600).toString(), 10);
-                  const s = seconds < 10 ? "0" + seconds : seconds;
-                  const m = minutes < 10 ? "0" + minutes : minutes;
-                  let h = hours < 10 ? "0" + hours : hours;
-                  h = h === "00" ? "" : h + ":";
-                  return h + m + ":" + s;
-                }}
-                allowFontScaling={true}
-              />
-            </View>
+          <View>
+            <Text>Total Coins : {this.props.store.score} </Text>
+          </View>
+          <View>
+            <Icon name="trophy" size={30} onPress={() => this.props.navigation.navigate("AvatarAndClickable")} />
+          </View>
+          <View>
+            <Icon name="login" size={30} color="#900" onPress={() => this.props.navigation.navigate("Login")} />
+          </View>
+          <View >
+
+            <TimerCountdown
+              initialMilliseconds={this.state.milliseconds}
+              onTick={milliseconds => this._onTickTimer(milliseconds)}
+              onExpire={() => console.log("complete")}
+              formatMilliseconds={milliseconds => {
+                const remainingSec = Math.round(milliseconds / 1000);
+                const seconds = parseInt((remainingSec % 60).toString(), 10);
+                const minutes = parseInt(
+                  ((remainingSec / 60) % 60).toString(),
+                  10
+                );
+                const hours = parseInt((remainingSec / 3600).toString(), 10);
+                const s = seconds < 10 ? "0" + seconds : seconds;
+                const m = minutes < 10 ? "0" + minutes : minutes;
+                let h = hours < 10 ? "0" + hours : hours;
+                h = h === "00" ? "" : h + ":";
+                return h + m + ":" + s;
+              }}
+              allowFontScaling={true}
+            />
+          </View>
         </View>
         <Image
           style={styles.image}

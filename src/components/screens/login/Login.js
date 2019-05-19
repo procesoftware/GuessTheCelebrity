@@ -4,8 +4,7 @@ import { View, StyleSheet,  ActivityIndicator, Text, Button } from 'react-native
 import { inject, observer } from "mobx-react/native";
 import { GTCInput } from '../../common/GTCInput';
 import { GTCButton } from '../../common/GTCButton';
-import * as firebase from 'firebase';
-import config from "../../../../config";
+import FirebaseConfig from "../../../../firebaseConfig";
 
 
 @inject('store') @observer
@@ -29,22 +28,13 @@ export default class Login extends Component {
         />),
       });
       componentWillMount(){
-        const firebaseConfig= {
-            apiKey: config.apiKey,
-            authDomain: config.authDomain,
-            databaseURL: config.databaseURL,
-            projectId: config.projectId,
-            storageBucket: config.storageBucket,
-            messagingSenderId: config.messagingSenderId,
-            appId: config.appId
-        }
-        firebase.initializeApp(firebaseConfig);
+       
       }
 
       onPressSignIn() {
           //this.setState({authenticating:true})
 
-            firebase
+          FirebaseConfig
               .auth()
               .createUserWithEmailAndPassword(this.state.email, this.state.password)
               .then(() => { 
@@ -59,15 +49,7 @@ export default class Login extends Component {
           
       }
 
-      SignUp = (email, password) => {
-        try {
-          firebase.auth().createUserWithEmailAndPassword(email, password);
-        } catch (error) {
-          console.log(error.toString(error));
-        }
-      };
-
-    renderCurrentState()  {
+     renderCurrentState()  {
         if (this.state.authenticating){
             return (
                 <View style={styles.form}>
