@@ -45,6 +45,11 @@ export default class GameScreen extends Component {
 
   componentWillUnmount(){
     this.setState({milliseconds:0});
+   // let config = {
+      //databaseURL: "https://guessthecelebrity-de0ce.firebaseio.com",
+     // projectId: "<project-id>",
+  //};
+ // firebase.initializeApp(config);
   }
 
   initializeGame = firstLoad => {
@@ -242,10 +247,8 @@ export default class GameScreen extends Component {
     console.log("selfPlay hint");
     var randomChars = this.state.randomChars.slice();
     var guessName = this.state.guessName.slice();
-
     //guessName.push(randomChars[index]);
     //randomChars[index] = "";
-
     //this.setState({ randomChars: randomChars, guessName: guessName });
     //find the index
     // ismi burda this.state.celebrityName
@@ -267,7 +270,6 @@ export default class GameScreen extends Component {
 
   _getBoardLetter = searchLetter => {
     // the Letter is send find the letter and return the index on the board
-
     //(this.state.celebrityName[i])
     var randomChars = this.state.randomChars.slice();
     for (var i = 0; i < randomChars.length; i++) {
@@ -279,6 +281,8 @@ export default class GameScreen extends Component {
     title: "Guess The Celebrity",
     headerLeft: null
   };
+
+
 
   render() {
     const { play } = this.state;
