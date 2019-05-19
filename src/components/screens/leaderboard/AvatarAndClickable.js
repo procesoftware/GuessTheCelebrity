@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Alert, Text } from 'react-native';
+import { View, Alert, Text, Button } from 'react-native';
 
 import Leaderboard from 'react-native-leaderboard';
 import { inject, observer } from "mobx-react/native";
@@ -24,6 +24,16 @@ export default class AvatarAndClickable extends Component {
             { name: 'Lauren Leonard', score: 30, iconUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr27ZFBaclzKcxg2FgJh6xi3Z5-9vP_U1DPcB149bYXxlPKqv-' },
         ]
     }
+
+    static navigationOptions = ({ navigation, screenProps }) =>  ({
+        title: "Guess The Celebrity",
+        headerLeft: ( 
+        <Button
+          onPress={ () =>  navigation.navigate("Game") }
+          title="Game"
+          color="#f00"
+        />),
+      });
 
     _alert = (title, body) => {
         Alert.alert(title, body,

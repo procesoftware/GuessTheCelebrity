@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet,  ActivityIndicator, Text } from 'react-native';
+import { View, StyleSheet,  ActivityIndicator, Text, Button } from 'react-native';
 
 import { inject, observer } from "mobx-react/native";
 import { GTCInput } from '../../common/GTCInput';
@@ -18,9 +18,18 @@ export default class Login extends Component {
          errorMessage: ''
         };
       }
+      static navigationOptions = ({ navigation, screenProps }) =>  ({
+        title: "Guess The Celebrity",
+        headerLeft: ( 
+        <Button
+          onPress={ () =>  navigation.navigate("Game") }
+          title="Game"
+          color="#f00"
+        />),
+      });
       componentWillMount(){
         const firebaseConfig= {
-            apiKey: "",
+            apiKey: "AIzaSyCAgplpZKIns2BOJ0WKBG87pCYxkS-_MvU",
             authDomain: "guessthecelebrity-de0ce.firebaseapp.com",
             databaseURL: "https://guessthecelebrity-de0ce.firebaseio.com",
             projectId: "guessthecelebrity-de0ce",

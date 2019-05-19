@@ -13,7 +13,15 @@ import { styles } from './WinScreen.style';
 @inject('store') @observer
 export default class TryAgain extends Component {
 
-
+  static navigationOptions = ({ navigation, screenProps }) =>  ({
+    title: "Guess The Celebrity",
+    headerLeft: ( 
+    <Button
+      onPress={ () =>  navigation.navigate("Game") }
+      title="Game"
+      color="#f00"
+    />),
+  });
 
   constructor(props) {
     super(props);
