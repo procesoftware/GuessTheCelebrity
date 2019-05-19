@@ -56,3 +56,5 @@ buck-out/
 *.jsbundle
 koray/
 .vscode/
+
+config.js

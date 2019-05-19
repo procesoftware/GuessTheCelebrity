@@ -5,6 +5,7 @@ import { inject, observer } from "mobx-react/native";
 import { GTCInput } from '../../common/GTCInput';
 import { GTCButton } from '../../common/GTCButton';
 import * as firebase from 'firebase';
+import config from "../../../../config";
 
 
 @inject('store') @observer
@@ -29,13 +30,13 @@ export default class Login extends Component {
       });
       componentWillMount(){
         const firebaseConfig= {
-            apiKey: "",
-            authDomain: "guessthecelebrity-de0ce.firebaseapp.com",
-            databaseURL: "https://guessthecelebrity-de0ce.firebaseio.com",
-            projectId: "guessthecelebrity-de0ce",
-            storageBucket: "guessthecelebrity-de0ce.appspot.com",
-            messagingSenderId: "830479563653",
-            appId: "1:830479563653:web:d8dcdafccce55ddc"
+            apiKey: config.apiKey,
+            authDomain: config.authDomain,
+            databaseURL: config.databaseURL,
+            projectId: config.projectId,
+            storageBucket: config.storageBucket,
+            messagingSenderId: config.messagingSenderId,
+            appId: config.appId
         }
         firebase.initializeApp(firebaseConfig);
       }
